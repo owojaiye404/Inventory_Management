@@ -88,6 +88,11 @@ exports.userLogin = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
+  sendEmail({
+    to: email,
+    subject: "login detected",
+    text: `dear user you have succefully login in to your account on our mobile app in case this is not you quickly contact our customer care support`,
+  });
 };
 
 exports.getUsers = async (req, res) => {
